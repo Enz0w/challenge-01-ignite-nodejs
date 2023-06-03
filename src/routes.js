@@ -4,10 +4,6 @@ import { buildRoutePath } from './utils/build-route-path.js'
 
 const database = new Database()
 
-// Query Parameters: URL Stateful => Filtros, paginação, não-obrigatórios
-// Route Parameters: Identificação de recurso
-// Request Body: Envio de informações de um formulário (HTTPs)
-
 export const routes = [
   {
     method: 'GET',
