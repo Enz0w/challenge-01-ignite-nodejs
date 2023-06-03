@@ -41,7 +41,7 @@ export const routes = [
         description,
         created_at: new Date(),
         updated_at: new Date(),
-        completed_at: null,
+        isCompleted: null,
       }
 
       database.insert('tasks', task)
@@ -73,7 +73,7 @@ export const routes = [
         description: description ? description : task.description,
         updated_at: new Date(),
         created_at: task.created_at,
-        completed_at: task.completed_at,
+        isCompleted: task.isCompleted,
       })
 
       return response.writeHead(204).end()
@@ -108,16 +108,16 @@ export const routes = [
         return response.writeHead(404).end(JSON.stringify('task not found'))
       }
 
-      const isTaskCompleted = !!task.completed_at
+      const isTaskCompleted = !!task.isCompleted
       
-      const completed_at = !isTaskCompleted   
+      const isCompleted = !isTaskCompleted   
 
       database.update('tasks', id, {
         title: task.title,
         description: task.description,
         updated_at: new Date(),
         created_at: task.created_at,
-        completed_at,
+        isCompleted,
       })
 
       return response.writeHead(204).end()
